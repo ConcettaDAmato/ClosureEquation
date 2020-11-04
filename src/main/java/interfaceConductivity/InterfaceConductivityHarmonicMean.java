@@ -1,4 +1,4 @@
-package interfaceConductivity;
+package interfaceconductivity;
 /*
  * GNU GPL v3 License
  *

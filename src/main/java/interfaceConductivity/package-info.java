@@ -5,4 +5,4 @@
  * @author Niccolo` Tubini
  *
  */
-package interfaceConductivity;
+package interfaceconductivity;
