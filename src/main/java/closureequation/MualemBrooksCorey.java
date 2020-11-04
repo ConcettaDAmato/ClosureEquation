@@ -24,7 +24,6 @@ package closureequation;
 
 import closureequation.ClosureEquation;
 import rheology.Rheology;
-import rheology.RheologyParameters;
 
 /**
  * @author Niccolo` Tubini
@@ -36,17 +35,16 @@ public class MualemBrooksCorey extends ClosureEquation{
 	
 	public MualemBrooksCorey(Rheology rheology) {
 		super(rheology);
-		// TODO Auto-generated constructor stub
 	}
 	
 	
 	public double k(double x, double y, int id, int element) {
 			
-		saturationDegree = (super.rheology.f(x, y, id) - parameters.thetaR[id])/(parameters.thetaS[id] - parameters.thetaR[id]); 
+		saturationDegree = (super.rheology.f(x, y, id) - super.rheology.parameters.thetaR[id])/(super.rheology.parameters.thetaS[id] -super. rheology.parameters.thetaR[id]); 
 		if(saturationDegree<1) {
-			return parameters.kappaSaturation[id] * Math.pow(saturationDegree, 3+2/super.parameters.par1[id]);
+			return super.rheology.parameters.kappaSaturation[id] * Math.pow(saturationDegree, 3+2/super.rheology.parameters.par1[id]);
 		} else {
-			return parameters.kappaSaturation[id];
+			return super.rheology.parameters.kappaSaturation[id];
 		}
 		
 	

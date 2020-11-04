@@ -24,7 +24,6 @@ package closureequation;
 
 import closureequation.ClosureEquation;
 import rheology.Rheology;
-import rheology.RheologyParameters;
 
 /**
  * @author Niccolo` Tubini
@@ -45,10 +44,10 @@ public class Johansen extends ClosureEquation{
 	
 	public double k(double x, int id, int element) {
 		
-		iceRatio = (parameters.thetaS[id] - rheology.f(x, id))/parameters.thetaS[id];
+		iceRatio = (super.rheology.parameters.thetaS[id] - rheology.f(x, id))/super.rheology.parameters.thetaS[id];
 		kerstenNumber = 1.0; // soil is assumed to be always saturated
 		
-		return Math.pow(parameters.thermalConductivitySoilParticles[id], 1-parameters.thetaS[id]) * Math.pow(parameters.thermalConductivityWater, (1-iceRatio)*parameters.thetaS[id]) * Math.pow(parameters.thermalConductivityIce, iceRatio*parameters.thetaS[id]);
+		return Math.pow(super.rheology.parameters.thermalConductivitySoilParticles[id], 1-super.rheology.parameters.thetaS[id]) * Math.pow(super.rheology.parameters.thermalConductivityWater, (1-iceRatio)*super.rheology.parameters.thetaS[id]) * Math.pow(super.rheology.parameters.thermalConductivityIce, iceRatio*super.rheology.parameters.thetaS[id]);
 	}
 
 

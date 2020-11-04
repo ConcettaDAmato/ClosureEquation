@@ -31,11 +31,9 @@ import rheology.RheologyParameters;
  */
 public abstract class ClosureEquation {
 	
-	public RheologyParameters parameters;
-	public Rheology rheology;
+	protected Rheology rheology;
 	
 	public ClosureEquation(Rheology rheology) {
-		parameters = RheologyParameters.getInstance();
 		this.rheology = rheology;
 	}
 	

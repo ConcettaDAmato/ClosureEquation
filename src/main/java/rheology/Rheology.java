@@ -29,6 +29,7 @@ package rheology;
 public abstract class Rheology {
 	
 	public RheologyParameters parameters;
+	
 	public Rheology() {
 		parameters = RheologyParameters.getInstance();
 	}

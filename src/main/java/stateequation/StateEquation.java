@@ -22,7 +22,7 @@
  */
 package stateequation;
 
-import rheology.RheologyParameters;
+import rheology.Rheology;
 
 /**
  * @author Niccolo` Tubini
@@ -30,9 +30,10 @@ import rheology.RheologyParameters;
  */
 public abstract class StateEquation {
 	
-	public RheologyParameters parameters;
-	public StateEquation() {
-		parameters = RheologyParameters.getInstance();
+	protected Rheology rheology;
+	
+	public StateEquation(Rheology rheology) {
+		this.rheology = rheology;
 	}
 	
 	public abstract double stateEquation(double x, double y, int id, int element);

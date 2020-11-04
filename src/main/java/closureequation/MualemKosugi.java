@@ -26,7 +26,6 @@ import org.apache.commons.math3.special.Erf;
 
 import closureequation.ClosureEquation;
 import rheology.Rheology;
-import rheology.RheologyParameters;
 
 /**
  * @author Niccolo` Tubini
@@ -47,11 +46,11 @@ public class MualemKosugi extends ClosureEquation{
 	
 	public double k(double x, double y, int id, int element) {
 			
-		saturationDegree = (super.rheology.f(x, y, id) - parameters.thetaR[id])/(parameters.thetaS[id] - parameters.thetaR[id]); 
+		saturationDegree = (super.rheology.f(x, y, id) - super.rheology.parameters.thetaR[id])/( super.rheology.parameters.thetaS[id] -  super.rheology.parameters.thetaR[id]); 
 		if(saturationDegree<1) {
-			return parameters.kappaSaturation[id] * Math.pow(this.saturationDegree, 0.5)*Math.pow( ( 0.5*Erf.erfc( Math.log(x/super.parameters.par1[id])/(Math.sqrt(2)*super.parameters.par2[id]) + super.parameters.par2[id]/Math.sqrt(2)  ) ),2 );
+			return super.rheology.parameters.kappaSaturation[id] * Math.pow(this.saturationDegree, 0.5)*Math.pow( ( 0.5*Erf.erfc( Math.log(x/ super.rheology.parameters.par1[id])/(Math.sqrt(2)*super.rheology.parameters.par2[id]) + super.rheology.parameters.par2[id]/Math.sqrt(2)  ) ),2 );
 		} else {
-			return parameters.kappaSaturation[id];
+			return super.rheology.parameters.kappaSaturation[id];
 		}
 		
 	
