@@ -59,8 +59,4 @@ dependencies {
     // https://mvnrepository.com/artifact/org.jgrasstools/jgt-jgrassgears
     compile group: 'org.jgrasstools', name: 'jgt-jgrassgears', version: '0.7.8'
 
-	// https://mvnrepository.com/artifact/edu.ucar/netcdf
-	compile group: 'edu.ucar', name: 'netcdf', version: '4.3.22'
-	
-	compile group: 'org.slf4j', name:'slf4j-nop', version: '1.7.5'
 }
