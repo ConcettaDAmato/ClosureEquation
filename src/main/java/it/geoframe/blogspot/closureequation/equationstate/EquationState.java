@@ -30,21 +30,21 @@ import it.geoframe.blogspot.closureequation.closureequation.ClosureEquation;
  */
 public abstract class EquationState {
 	
-	protected ClosureEquation rheology;
+	protected ClosureEquation closureEquation;
 	
-	public EquationState(ClosureEquation rheology) {
-		this.rheology = rheology;
+	public EquationState(ClosureEquation closureEquation) {
+		this.closureEquation = closureEquation;
 	}
 	
-	public abstract double stateEquation(double x, double y, int id, int element);
+	public abstract double equationState(double x, double y, int id, int element);
 
 	
 	
-	public abstract double dStateEquation(double x, double y, int id, int element);
+	public abstract double dEquationState(double x, double y, int id, int element);
 	
 	
 	
-	public abstract double ddStateEquation(double x, double y, int id, int element);
+	public abstract double ddEquationState(double x, double y, int id, int element);
 	
 	
 	
@@ -61,13 +61,13 @@ public abstract class EquationState {
 	
 	
 	public double q(double x, double y, int id, int element) {
-		return p(x, y, id, element) - dStateEquation(x, y, id, element);
+		return p(x, y, id, element) - dEquationState(x, y, id, element);
 	}
 	
 	
 	
 	public double qIntegral(double x,double y,  int id, int element) {
-		return pIntegral(x, y, id, element) - stateEquation(x, y, id, element);
+		return pIntegral(x, y, id, element) - equationState(x, y, id, element);
 	}
 
 }
