@@ -27,9 +27,9 @@ package it.geoframe.blogspot.closureequation.closureequation;
 public class SoilWaterRetentionCurveFactory {
 	
 	
-	public SoilWaterRetentionCurve create(String model) {
+	public ClosureEquation create(String model) {
 		
-		SoilWaterRetentionCurve myModel = null;
+		ClosureEquation myModel = null;
 		
 		if(model.equalsIgnoreCase("Van Genuchten") || model.equalsIgnoreCase("VanGenuchten") || model.equalsIgnoreCase("VG")) {
 			myModel = new SWRCVanGenuchten();
@@ -39,6 +39,8 @@ public class SoilWaterRetentionCurveFactory {
 			myModel = new SWRCKosugi();
 		}else if(model.equalsIgnoreCase("Romano")) {
 			myModel = new SWRCRomano();
+		}else if(model.equalsIgnoreCase("Water Depth") || model.equalsIgnoreCase("WaterDepth")) {
+			myModel = new WaterDepth();
 		}else {
 			System.out.println("\n\n\tERROR: please check swrcModel name.");
 		}
