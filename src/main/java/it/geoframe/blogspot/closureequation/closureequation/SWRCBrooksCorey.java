@@ -35,7 +35,7 @@ public class SWRCBrooksCorey extends SoilWaterRetentionCurve {
 	@Override
 	public double f(double x, double y, int id) {
 
-		if(x>0.0) {
+		if(x>=0.0) {
 			return super.parameters.thetaS[id] +
 					9.81*(super.parameters.alphaSpecificStorage[id] + super.parameters.thetaS[id]*super.parameters.betaSpecificStorage[id])*x;
 		} else if(x<=super.parameters.par2[id]) {
@@ -50,7 +50,7 @@ public class SWRCBrooksCorey extends SoilWaterRetentionCurve {
 	@Override
 	public double df(double x, double y, int id) {
 
-		if(x>0.0) {
+		if(x>=0.0) {
 			return 9.81*( super.parameters.alphaSpecificStorage[id] + super.parameters.thetaS[id]*super.parameters.betaSpecificStorage[id] );
 		} else if(x<=super.parameters.par2[id]) {
 			return super.parameters.par1[id]*(super.parameters.thetaS[id] - super.parameters.thetaR[id])/Math.abs(super.parameters.par2[id]) * Math.pow(super.parameters.par2[id]/x,super.parameters.par1[id]+1);
