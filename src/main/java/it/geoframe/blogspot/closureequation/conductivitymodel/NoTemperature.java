@@ -33,7 +33,7 @@ public class NoTemperature  extends UnsaturatedHydraulicConductivityTemperatureD
 	
 	public NoTemperature(ClosureEquation closureEquation, ConductivityEquation modelUHC) {
 		
-		super(modelSWRC);
+		super(closureEquation);
 		this.modelUHC = modelUHC;
 		
 	}
