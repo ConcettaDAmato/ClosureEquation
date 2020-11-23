@@ -31,10 +31,10 @@ import it.geoframe.blogspot.closureequation.closureequation.Parameters;
  */
 public abstract class ConductivityEquation {
 	
-	protected ClosureEquation rheology;
+	protected ClosureEquation closureEquation;
 	
-	public ConductivityEquation(ClosureEquation rheology) {
-		this.rheology = rheology;
+	public ConductivityEquation(ClosureEquation closureEquation) {
+		this.closureEquation = closureEquation;
 	}
 	
 	public abstract double k(double x, int id, int element);

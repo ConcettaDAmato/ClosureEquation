@@ -33,15 +33,15 @@ public class UnsaturatedHydraulicConductivityTemperatureFactory {
 	
 	UnsaturatedHydraulicConductivityTemperatureDecorator unsaturatedHydraulicConductivityTemperature = null;
 	
-	public UnsaturatedHydraulicConductivityTemperatureDecorator create(String type, ClosureEquation modelSWRC,
+	public UnsaturatedHydraulicConductivityTemperatureDecorator create(String type, ClosureEquation closureEquation,
 																		ConductivityEquation modelUHC) {
 		
 		if( type.equalsIgnoreCase("Ronan") || type.equalsIgnoreCase("Ronan1998") ) {
-			unsaturatedHydraulicConductivityTemperature = new Ronan1998(modelSWRC, modelUHC);
+			unsaturatedHydraulicConductivityTemperature = new Ronan1998(closureEquation, modelUHC);
 		} else if ( type.equalsIgnoreCase("Hornberger") || type.equalsIgnoreCase("Hornberger1998") ) {
-			unsaturatedHydraulicConductivityTemperature = new Hornberger1998(modelSWRC, modelUHC);
+			unsaturatedHydraulicConductivityTemperature = new Hornberger1998(closureEquation, modelUHC);
 		} else if ( type.equalsIgnoreCase("No temperature") || type.equalsIgnoreCase("notemperature") ) {
-			unsaturatedHydraulicConductivityTemperature = new NoTemperature(modelSWRC, modelUHC);
+			unsaturatedHydraulicConductivityTemperature = new NoTemperature(closureEquation, modelUHC);
 		}
 		
 		return unsaturatedHydraulicConductivityTemperature;

@@ -44,10 +44,10 @@ public class Johansen extends ConductivityEquation{
 	
 	public double k(double x, int id, int element) {
 		
-		iceRatio = (super.rheology.parameters.thetaS[id] - rheology.f(x, id))/super.rheology.parameters.thetaS[id];
+		iceRatio = (super.closureEquation.parameters.thetaS[id] - closureEquation.f(x, id))/super.closureEquation.parameters.thetaS[id];
 		kerstenNumber = 1.0; // soil is assumed to be always saturated
 		
-		return Math.pow(super.rheology.parameters.thermalConductivitySoilParticles[id], 1-super.rheology.parameters.thetaS[id]) * Math.pow(super.rheology.parameters.thermalConductivityWater, (1-iceRatio)*super.rheology.parameters.thetaS[id]) * Math.pow(super.rheology.parameters.thermalConductivityIce, iceRatio*super.rheology.parameters.thetaS[id]);
+		return Math.pow(super.closureEquation.parameters.thermalConductivitySoilParticles[id], 1-super.closureEquation.parameters.thetaS[id]) * Math.pow(super.closureEquation.parameters.thermalConductivityWater, (1-iceRatio)*super.closureEquation.parameters.thetaS[id]) * Math.pow(super.closureEquation.parameters.thermalConductivityIce, iceRatio*super.closureEquation.parameters.thetaS[id]);
 	}
 
 

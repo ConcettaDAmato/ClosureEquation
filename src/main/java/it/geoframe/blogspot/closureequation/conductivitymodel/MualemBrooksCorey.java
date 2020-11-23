@@ -33,18 +33,18 @@ public class MualemBrooksCorey extends ConductivityEquation{
 	
 	private double saturationDegree = -999.0;
 	
-	public MualemBrooksCorey(ClosureEquation rheology) {
-		super(rheology);
+	public MualemBrooksCorey(ClosureEquation closureEquation) {
+		super(closureEquation);
 	}
 	
 	
 	public double k(double x, double y, int id, int element) {
 			
-		saturationDegree = (super.rheology.f(x, y, id) - super.rheology.parameters.thetaR[id])/(super.rheology.parameters.thetaS[id] -super. rheology.parameters.thetaR[id]); 
+		saturationDegree = (super.closureEquation.f(x, y, id) - super.closureEquation.parameters.thetaR[id])/(super.closureEquation.parameters.thetaS[id] -super.closureEquation.parameters.thetaR[id]); 
 		if(saturationDegree<1) {
-			return super.rheology.parameters.kappaSaturation[id] * Math.pow(saturationDegree, 3+2/super.rheology.parameters.par1[id]);
+			return super.closureEquation.parameters.kappaSaturation[id] * Math.pow(saturationDegree, 3+2/super.closureEquation.parameters.par1[id]);
 		} else {
-			return super.rheology.parameters.kappaSaturation[id];
+			return super.closureEquation.parameters.kappaSaturation[id];
 		}
 		
 	

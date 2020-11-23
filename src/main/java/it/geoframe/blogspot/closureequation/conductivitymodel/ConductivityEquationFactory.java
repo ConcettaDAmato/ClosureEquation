@@ -24,21 +24,25 @@ import it.geoframe.blogspot.closureequation.closureequation.ClosureEquation;
 public class ConductivityEquationFactory {
 	
 	
-	public ConductivityEquation create(String model, ClosureEquation rheologyModel) {
+	public ConductivityEquation create(String model, ClosureEquation closureEquation) {
 		
 		ConductivityEquation myModel = null;
 		
 		if(model.equalsIgnoreCase("Johansen")) {
-			myModel = new Johansen(rheologyModel);
+			myModel = new Johansen(closureEquation);
 		} else if (model.equalsIgnoreCase("Mualem Van Genuchten") || model.equalsIgnoreCase("MualemVanGenuchten") || model.equalsIgnoreCase("Mualem VG") ) {
-			myModel = new MualemVanGenuchten(rheologyModel);
+			myModel = new MualemVanGenuchten(closureEquation);
 		} else if (model.equalsIgnoreCase("Mualem Brooks Corey") || model.equalsIgnoreCase("MualemBrooksCorey") || model.equalsIgnoreCase("Mualem BC") ) {
-			myModel = new MualemBrooksCorey(rheologyModel);
+			myModel = new MualemBrooksCorey(closureEquation);
 		} else if (model.equalsIgnoreCase("Mualem Kosugi") || model.equalsIgnoreCase("MualemKosugy") ) {
-			myModel = new MualemKosugi(rheologyModel);
+			myModel = new MualemKosugi(closureEquation);
 		} else if (model.equalsIgnoreCase("Mualem Romano") || model.equalsIgnoreCase("MualemRomano") ) {
-			myModel = new MualemRomano(rheologyModel);
-		} else {
+			myModel = new MualemRomano(closureEquation);
+		} else if (model.equalsIgnoreCase("Soil Thermal Conductivity Cosenza") || model.equalsIgnoreCase("SoilThermalConductivityCosenza") || model.equalsIgnoreCase("Cosenza")) {
+			myModel = new SoilThermalConductivityCosenza(closureEquation);
+		} else if (model.equalsIgnoreCase("Water Thermal Conductivity") || model.equalsIgnoreCase("WaterThermalConductivity") || model.equalsIgnoreCase("Water")) {
+			myModel = new WaterThermalConductivity(closureEquation);
+		}  else {
 			System.out.println("\n\n\tERROR: please check the name for the unsaturated hydraulic conductivity model.");
 		}
 		return myModel;

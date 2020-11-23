@@ -29,8 +29,8 @@ import it.geoframe.blogspot.closureequation.closureequation.ClosureEquation;
 public abstract class UnsaturatedHydraulicConductivityTemperatureDecorator extends ConductivityEquation {
 	
 	
-	UnsaturatedHydraulicConductivityTemperatureDecorator(ClosureEquation modelSWRC) {
-		super(modelSWRC);
+	UnsaturatedHydraulicConductivityTemperatureDecorator(ClosureEquation closureEquation) {
+		super(closureEquation);
 		// TODO Auto-generated constructor stub
 	}
 	

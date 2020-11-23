@@ -34,20 +34,20 @@ public class MualemVanGenuchten extends ConductivityEquation{
 	private double m = -999.0;
 	private double saturationDegree = -999.0;
 	
-	public MualemVanGenuchten(ClosureEquation rheology) {
-		super(rheology);
+	public MualemVanGenuchten(ClosureEquation closureEquation) {
+		super(closureEquation);
 		// TODO Auto-generated constructor stub
 	}
 	
 	
 	public double k(double x, double y, int id, int element) {
 			
-		this.m = 1-1/super.rheology.parameters.par1[id];
-		saturationDegree = (super.rheology.f(x, y, id) - super.rheology.parameters.thetaR[id])/(super.rheology.parameters.thetaS[id] - super.rheology.parameters.thetaR[id]); 
+		this.m = 1-1/super.closureEquation.parameters.par1[id];
+		saturationDegree = (super.closureEquation.f(x, y, id) - super.closureEquation.parameters.thetaR[id])/(super.closureEquation.parameters.thetaS[id] - super.closureEquation.parameters.thetaR[id]); 
 		if(saturationDegree<1) {
-			return super.rheology.parameters.kappaSaturation[id] * Math.pow(saturationDegree, 0.5 ) * Math.pow(1.0 - Math.pow(1.0 - Math.pow(saturationDegree, 1.0/m), m), 2.0);
+			return super.closureEquation.parameters.kappaSaturation[id] * Math.pow(saturationDegree, 0.5 ) * Math.pow(1.0 - Math.pow(1.0 - Math.pow(saturationDegree, 1.0/m), m), 2.0);
 		} else {
-			return super.rheology.parameters.kappaSaturation[id];
+			return super.closureEquation.parameters.kappaSaturation[id];
 		}
 		
 	

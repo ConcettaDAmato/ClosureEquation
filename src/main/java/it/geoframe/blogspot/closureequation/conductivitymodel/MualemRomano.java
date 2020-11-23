@@ -39,23 +39,23 @@ public class MualemRomano extends ConductivityEquation{
 	private double b;
 	private double saturationDegree = -999.0;
 	
-	public MualemRomano(ClosureEquation rheology) {
-		super(rheology);
+	public MualemRomano(ClosureEquation closureEquation) {
+		super(closureEquation);
 		// TODO Auto-generated constructor stub
 	}
 	
 	
 	public double k(double x, double y, int id, int element) {
 		
-		saturationDegree = (super.rheology.f(x, y, id) - super.rheology.parameters.thetaR[id])/(super.rheology.parameters.thetaS[id] - super.rheology.parameters.thetaR[id]); 
+		saturationDegree = (super.closureEquation.f(x, y, id) - super.closureEquation.parameters.thetaR[id])/(super.closureEquation.parameters.thetaS[id] - super.closureEquation.parameters.thetaR[id]); 
 		if(saturationDegree<1) {
-			alpha= ( Math.pow(super.rheology.parameters.par2[id], 2) + Math.log(x/super.rheology.parameters.par4[id]) ) / ( super.rheology.parameters.par2[id]*Math.sqrt(2) );
-			beta = ( Math.pow(super.rheology.parameters.par3[id], 2) + Math.log(x/super.rheology.parameters.par5[id]) ) / ( super.rheology.parameters.par3[id]*Math.sqrt(2) );
-			a = super.rheology.parameters.par1[id]/super.rheology.parameters.par4[id] * Math.exp(Math.pow(super.rheology.parameters.par2[id],2)/2);
-			b = (1-super.rheology.parameters.par1[id])/super.rheology.parameters.par5[id] * Math.exp(Math.pow(super.rheology.parameters.par3[id],2)/2);
-			return super.rheology.parameters.kappaSaturation[id] * Math.sqrt(this.saturationDegree)/(4*Math.pow(a+b, 2)) * Math.pow(a*Erf.erfc(alpha) + b*Erf.erfc(beta), 2);
+			alpha= ( Math.pow(super.closureEquation.parameters.par2[id], 2) + Math.log(x/super.closureEquation.parameters.par4[id]) ) / ( super.closureEquation.parameters.par2[id]*Math.sqrt(2) );
+			beta = ( Math.pow(super.closureEquation.parameters.par3[id], 2) + Math.log(x/super.closureEquation.parameters.par5[id]) ) / ( super.closureEquation.parameters.par3[id]*Math.sqrt(2) );
+			a = super.closureEquation.parameters.par1[id]/super.closureEquation.parameters.par4[id] * Math.exp(Math.pow(super.closureEquation.parameters.par2[id],2)/2);
+			b = (1-super.closureEquation.parameters.par1[id])/super.closureEquation.parameters.par5[id] * Math.exp(Math.pow(super.closureEquation.parameters.par3[id],2)/2);
+			return super.closureEquation.parameters.kappaSaturation[id] * Math.sqrt(this.saturationDegree)/(4*Math.pow(a+b, 2)) * Math.pow(a*Erf.erfc(alpha) + b*Erf.erfc(beta), 2);
 		} else {
-			return super.rheology.parameters.kappaSaturation[id];
+			return super.closureEquation.parameters.kappaSaturation[id];
 		}
 		
 	

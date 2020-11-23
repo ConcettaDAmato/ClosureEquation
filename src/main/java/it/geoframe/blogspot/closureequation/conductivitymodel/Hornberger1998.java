@@ -31,9 +31,9 @@ public class Hornberger1998  extends UnsaturatedHydraulicConductivityTemperature
 	
 	
 	
-	public Hornberger1998(ClosureEquation modelSWRC, ConductivityEquation modelUHC) {
+	public Hornberger1998(ClosureEquation closureEquation, ConductivityEquation modelUHC) {
 		
-		super(modelSWRC);
+		super(closureEquation);
 		this.modelUHC = modelUHC;
 		
 	}

@@ -41,6 +41,8 @@ public class SoilWaterRetentionCurveFactory {
 			myModel = new SWRCRomano();
 		}else if(model.equalsIgnoreCase("Water Depth") || model.equalsIgnoreCase("WaterDepth")) {
 			myModel = new WaterDepth();
+		}else if(model.equalsIgnoreCase("None") || model.equalsIgnoreCase("")) {
+			myModel = new NoneClosureEquation();
 		}else {
 			System.out.println("\n\n\tERROR: please check swrcModel name.");
 		}
