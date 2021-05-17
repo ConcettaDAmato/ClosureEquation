@@ -38,6 +38,8 @@ public class ConductivityEquationFactory {
 			myModel = new MualemKosugi(closureEquation);
 		} else if (model.equalsIgnoreCase("Mualem Romano") || model.equalsIgnoreCase("MualemRomano") ) {
 			myModel = new MualemRomano(closureEquation);
+		} else if (model.equalsIgnoreCase("Gardner") || model.equalsIgnoreCase("Gardner") ) {
+			myModel = new Gardner(closureEquation);
 		} else if (model.equalsIgnoreCase("Soil Thermal Conductivity Cosenza") || model.equalsIgnoreCase("SoilThermalConductivityCosenza") || model.equalsIgnoreCase("Cosenza")) {
 			myModel = new SoilThermalConductivityCosenza(closureEquation);
 		} else if (model.equalsIgnoreCase("Water Thermal Conductivity") || model.equalsIgnoreCase("WaterThermalConductivity") || model.equalsIgnoreCase("Water")) {

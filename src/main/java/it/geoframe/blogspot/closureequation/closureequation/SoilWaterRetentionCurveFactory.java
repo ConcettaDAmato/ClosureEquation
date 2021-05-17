@@ -39,8 +39,12 @@ public class SoilWaterRetentionCurveFactory {
 			myModel = new SWRCKosugi();
 		}else if(model.equalsIgnoreCase("Romano")) {
 			myModel = new SWRCRomano();
+		}else if(model.equalsIgnoreCase("Gardner")) {
+			myModel = new SWRCGardner();
 		}else if(model.equalsIgnoreCase("Water Depth") || model.equalsIgnoreCase("WaterDepth")) {
 			myModel = new WaterDepth();
+		}else if(model.equalsIgnoreCase("Van Genuchten Dall Amico") || model.equalsIgnoreCase("VanGenuchtenDallAmico")) {
+			myModel = new SWRCVanGenuchtenDallAmico();
 		}else if(model.equalsIgnoreCase("None") || model.equalsIgnoreCase("")) {
 			myModel = new NoneClosureEquation();
 		}else {

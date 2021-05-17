@@ -29,30 +29,32 @@ import it.geoframe.blogspot.closureequation.conductivitymodel.ConductivityEquati
  * @author Niccolo` Tubini
  *
  */
-public class SoilThermalConductivityCosenza extends ConductivityEquation{
+public class Gardner extends ConductivityEquation{
 	
-	public SoilThermalConductivityCosenza(ClosureEquation closureEquation) {
+	private double saturationDegree = -999.0;
+	
+	public Gardner(ClosureEquation closureEquation) {
 		super(closureEquation);
 		// TODO Auto-generated constructor stub
 	}
-
-	private double thermalConductivityAir = 0.023;
+	
+	
+	public double k(double x, double y, int id, int element) {
+			
+		saturationDegree = (super.closureEquation.f(x, y, id) - super.closureEquation.parameters.thetaR[id])/(super.closureEquation.parameters.thetaS[id] - super.closureEquation.parameters.thetaR[id]); 
+		if(saturationDegree<1) {
+			return super.closureEquation.parameters.kappaSaturation[id] * Math.exp(super.closureEquation.parameters.par1[id]*x);
+		} else {
+			return super.closureEquation.parameters.kappaSaturation[id];
+		}
+		
+	
+	}
 	
 	public double k(double x, int id, int element) {
-
+		
 		return -9999.0;
-	}
-
-
-	@Override
-	public double k(double x, double y, int id, int element) {
-		// TODO Auto-generated method stub
-		return Math.pow( (1-super.closureEquation.parameters.thetaS[id])*Math.sqrt(super.closureEquation.parameters.thermalConductivitySoilParticles[id]) 
-				+ super.closureEquation.f(y, x, id)*Math.sqrt(super.closureEquation.parameters.thermalConductivityWater)
-				+ (super.closureEquation.f(y, 273.2, id)-super.closureEquation.f(y, x, id))*Math.sqrt(super.closureEquation.parameters.thermalConductivityIce)
-				+ (super.closureEquation.parameters.thetaS[id]-super.closureEquation.f(y, 273.2, id))*Math.sqrt(thermalConductivityAir), 2);
-
-	}
 	
+	}
 	
 }
