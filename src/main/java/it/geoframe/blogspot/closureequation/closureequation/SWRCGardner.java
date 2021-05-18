@@ -54,7 +54,7 @@ public class SWRCGardner extends SoilWaterRetentionCurve {
 		if(x>=0.0) {
 			return 9.81*( super.parameters.alphaSpecificStorage[id] + super.parameters.thetaS[id]*super.parameters.betaSpecificStorage[id] );
 		} else {
-			return super.parameters.thetaR[id] + (super.parameters.thetaS[id]-super.parameters.thetaR[id])
+			return (super.parameters.thetaS[id]-super.parameters.thetaR[id])
 					*Math.exp(super.parameters.par1[id]*x)*super.parameters.par1[id];		
 		}
 	}
