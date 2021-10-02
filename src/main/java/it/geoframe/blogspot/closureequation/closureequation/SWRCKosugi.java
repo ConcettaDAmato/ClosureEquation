@@ -40,7 +40,7 @@ public class SWRCKosugi extends SoilWaterRetentionCurve {
 
 		if(x>=0.0) {
 			return super.parameters.thetaS[id] +
-					9.81*(super.parameters.alphaSpecificStorage[id] + super.parameters.thetaS[id]*super.parameters.betaSpecificStorage[id])*x;
+					1000*9.81*(super.parameters.alphaSpecificStorage[id] + super.parameters.thetaS[id]*super.parameters.betaSpecificStorage[id])*x;
 		} else {
 			
 			return super.parameters.thetaR[id] + (super.parameters.thetaS[id]-super.parameters.thetaR[id])
@@ -54,7 +54,7 @@ public class SWRCKosugi extends SoilWaterRetentionCurve {
 	public double df(double x, double y, int id) {
 
 		if(x>=0.0) {
-			return 9.81*( super.parameters.alphaSpecificStorage[id] + super.parameters.thetaS[id]*super.parameters.betaSpecificStorage[id] );
+			return 1000*9.81*( super.parameters.alphaSpecificStorage[id] + super.parameters.thetaS[id]*super.parameters.betaSpecificStorage[id] );
 		} else {
 			return (super.parameters.thetaS[id]-super.parameters.thetaR[id])/(Math.sqrt(2*Math.PI)*super.parameters.par2[id]*(-x)) * Math.exp(-Math.pow( Math.log(x/super.parameters.par1[id]),2)/(2*Math.pow(super.parameters.par2[id],2)));
 		}

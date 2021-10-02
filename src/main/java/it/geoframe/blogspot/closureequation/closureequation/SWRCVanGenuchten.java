@@ -41,7 +41,7 @@ public class SWRCVanGenuchten extends SoilWaterRetentionCurve {
 
 		if(x>=0.0) {
 			return super.parameters.thetaS[id] +
-					9.81*(super.parameters.alphaSpecificStorage[id] + super.parameters.thetaS[id]*super.parameters.betaSpecificStorage[id])*x;
+					1000*9.81*(super.parameters.alphaSpecificStorage[id] + super.parameters.thetaS[id]*super.parameters.betaSpecificStorage[id])*x;
 		} else {
 			
 			return super.parameters.thetaR[id] + (super.parameters.thetaS[id]-super.parameters.thetaR[id])
@@ -56,7 +56,7 @@ public class SWRCVanGenuchten extends SoilWaterRetentionCurve {
 		m = 1-1/super.parameters.par1[id];
 
 		if(x>=0.0) {
-			return 9.81*( super.parameters.alphaSpecificStorage[id] + super.parameters.thetaS[id]*super.parameters.betaSpecificStorage[id] );
+			return 1000*9.81*( super.parameters.alphaSpecificStorage[id] + super.parameters.thetaS[id]*super.parameters.betaSpecificStorage[id] );
 		} else {
 			return super.parameters.par2[id]*super.parameters.par1[id]*this.m*(super.parameters.thetaS[id] - super.parameters.thetaR[id]) / Math.pow(1.0 + Math.pow(Math.abs(super.parameters.par2[id]*x), super.parameters.par1[id]), this.m + 1.0)*Math.pow(Math.abs(super.parameters.par2[id]*x), super.parameters.par1[id] - 1.0);
 		}

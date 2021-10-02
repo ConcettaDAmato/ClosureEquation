@@ -43,7 +43,7 @@ public class SWRCRomano extends SoilWaterRetentionCurve {
 
 		if(x>=0.0) {
 			return super.parameters.thetaS[id] +
-					9.81*(super.parameters.alphaSpecificStorage[id] + super.parameters.thetaS[id]*super.parameters.betaSpecificStorage[id])*x;
+					1000*9.81*(super.parameters.alphaSpecificStorage[id] + super.parameters.thetaS[id]*super.parameters.betaSpecificStorage[id])*x;
 		} else {
 
 			return super.parameters.thetaR[id] + (super.parameters.thetaS[id]-super.parameters.thetaR[id]) *
@@ -57,7 +57,7 @@ public class SWRCRomano extends SoilWaterRetentionCurve {
 	public double df(double x, double y, int id) {
 
 		if(x>=0.0) {
-			return 9.81*( super.parameters.alphaSpecificStorage[id] + super.parameters.thetaS[id]*super.parameters.betaSpecificStorage[id] );
+			return 1000*9.81*( super.parameters.alphaSpecificStorage[id] + super.parameters.thetaS[id]*super.parameters.betaSpecificStorage[id] );
 		} else {
 			this.gamma1 = Math.exp( -Math.pow( ( Math.log(x/super.parameters.par4[id])/(super.parameters.par2[id]*Math.sqrt(2))), 2 ) );
 			this.gamma2 = Math.exp( -Math.pow( ( Math.log(super.parameters.par4[id]/super.parameters.par5[id]*x/super.parameters.par4[id])/(super.parameters.par3[id]*Math.sqrt(2))), 2 ) );

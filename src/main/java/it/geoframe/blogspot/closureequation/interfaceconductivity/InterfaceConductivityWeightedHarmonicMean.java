@@ -24,12 +24,12 @@ package it.geoframe.blogspot.closureequation.interfaceconductivity;
  * @author Niccolo' Tubini
  */
 
-public class InterfaceConductivityHarmonicMean extends InterfaceConductivity{
+public class InterfaceConductivityWeightedHarmonicMean extends InterfaceConductivity{
 
 	@Override
 	public double compute(double value1, double value2, double volume1, double volume2) {
 		
-		return Math.pow(0.5*(1/value1 + 1/value2), -1);
+		return (volume1+volume2)/(volume1/value1 + volume2/value2);
 
 	}
 	

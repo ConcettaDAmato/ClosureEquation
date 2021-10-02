@@ -39,6 +39,8 @@ public class SimpleInterfaceConductivityFactory {
 			return new InterfaceConductivityArithmeticMean();
 		} else if(type.equalsIgnoreCase("Harmonic Mean") || type.equalsIgnoreCase("HarmonicMean")){
 			return new InterfaceConductivityHarmonicMean();
+		} else if(type.equalsIgnoreCase("Weighted Harmonic Mean") || type.equalsIgnoreCase("WeightedHarmonicMean")){
+			return new InterfaceConductivityWeightedHarmonicMean();
 		} else if(type.equalsIgnoreCase("Geometric Mean") || type.equalsIgnoreCase("GeometricMean")){
 			return new InterfaceConductivityGeometricMean();
 		} else if(type.equalsIgnoreCase("Max") || type.equalsIgnoreCase("Maximum")){
