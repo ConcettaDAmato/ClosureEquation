@@ -35,17 +35,12 @@ public class Parameters {
 		return uniqueInstance;
 	}
 	
-	public static Parameters getInstance(double molecularDiffusion, double waterDensity, double iceDensity, double specificThermalCapacityWater,
-			double specificThermalCapacityIce, double thermalConductivityWater, double thermalConductivityIce, double latentHeatFusion, double referenceTemperatureInternalEnergy,
-			double referenceTemperatureSWRC, double beta0,
-			double[] thetaS, double[] thetaR, double[] soilParticlesDensity, double[] specificThermalCapacitySoilParticles, double[] thermalConductivitySoilParticles,
-			double[] meltingTemperature, double[] par1, double[] par2, double[] par3, double[] par4, double[] par5, double[] kappaSaturation,
+	public static Parameters getInstance(double molecularDiffusion, double referenceTemperatureSWRC, double beta0,
+			double[] thetaS, double[] thetaR, double[] par1, double[] par2, double[] par3, double[] par4, double[] par5, double[] kappaSaturation,
 			double[] alphaSpecificStorage, double[] betaSpecificStorage) {
 		if (uniqueInstance == null) {
-			uniqueInstance = new Parameters(molecularDiffusion, waterDensity, iceDensity, specificThermalCapacityWater,
-					 specificThermalCapacityIce, thermalConductivityWater, thermalConductivityIce, latentHeatFusion, referenceTemperatureInternalEnergy, referenceTemperatureSWRC, beta0,
-					 thetaS, thetaR, soilParticlesDensity, specificThermalCapacitySoilParticles, thermalConductivitySoilParticles,
-					 meltingTemperature, par1, par2, par3, par4, par5, kappaSaturation, alphaSpecificStorage, betaSpecificStorage);
+			uniqueInstance = new Parameters(molecularDiffusion,referenceTemperatureSWRC, beta0,
+					 thetaS, thetaR,par1, par2, par3, par4, par5, kappaSaturation, alphaSpecificStorage, betaSpecificStorage);
 		}
 		return uniqueInstance;
 	}
@@ -145,29 +140,15 @@ public class Parameters {
 		
 	}
 	
-	private Parameters(double molecularDiffusion,double waterDensity, double iceDensity, double specificThermalCapacityWater,
-			double specificThermalCapacityIce, double thermalConductivityWater, double thermalConductivityIce, double latentHeatFusion, double referenceTemperatureInternalEnergy, double referenceTemperatureSWRC, double beta0,
-			double[] thetaS, double[] thetaR, double[] soilParticlesDensity, double[] specificThermalCapacitySoilParticles, double[] thermalConductivitySoilParticles,
-			double[] meltingTemperature, double[] par1, double[] par2, double[] par3, double[] par4, double[] par5, double[] kappaSaturation,
+	private Parameters(double molecularDiffusion, double referenceTemperatureSWRC, double beta0,
+			double[] thetaS, double[] thetaR, double[] par1, double[] par2, double[] par3, double[] par4, double[] par5, double[] kappaSaturation,
 			double[] alphaSpecificStorage, double[] betaSpecificStorage) {
 		
 		this.molecularDiffusion = molecularDiffusion;
-		this.waterDensity = waterDensity;
-		this.iceDensity = iceDensity;
-		this.specificThermalCapacityIce = specificThermalCapacityIce;
-		this.specificThermalCapacityWater = specificThermalCapacityWater;
-		this.thermalConductivityWater = thermalConductivityWater;
-		this.thermalConductivityIce = thermalConductivityIce;
-		this.latentHeatFusion = latentHeatFusion;
-		this.referenceTemperatureInternalEnergy = referenceTemperatureInternalEnergy;
 		this.referenceTemperatureSWRC = referenceTemperatureSWRC;
 		this.beta0 = beta0;
 		this.thetaS = thetaS.clone();
 		this.thetaR = thetaR.clone();
-		this.soilParticlesDensity = soilParticlesDensity.clone();
-		this.specificThermalCapacitySoilParticles = specificThermalCapacitySoilParticles.clone();
-		this.thermalConductivitySoilParticles = thermalConductivitySoilParticles.clone();
-		this.meltingTemperature = meltingTemperature.clone();
 		this.par1 = par1.clone();
 		this.par2 = par2.clone();
 		this.par3 = par3.clone();
