@@ -35,18 +35,16 @@ public class Parameters {
 		return uniqueInstance;
 	}
 	
-	public static Parameters getInstance(double molecularDiffusion, double referenceTemperatureSWRC, double beta0,
+	public static Parameters getInstance(double molecularDiffusion,double longitudinalDispersivity,double tortuosityFactor, double referenceTemperatureSWRC, double beta0,
 			double[] thetaS, double[] thetaR, double[] par1, double[] par2, double[] par3, double[] par4, double[] par5, double[] kappaSaturation,
 			double[] alphaSpecificStorage, double[] betaSpecificStorage) {
 		if (uniqueInstance == null) {
-			uniqueInstance = new Parameters(molecularDiffusion,referenceTemperatureSWRC, beta0,
+			uniqueInstance = new Parameters(molecularDiffusion, longitudinalDispersivity, tortuosityFactor,referenceTemperatureSWRC, beta0,
 					 thetaS, thetaR,par1, par2, par3, par4, par5, kappaSaturation, alphaSpecificStorage, betaSpecificStorage);
 		}
 		return uniqueInstance;
 	}
-	
-	
-	
+
 	
 	public double waterDensity;
 	public double iceDensity;
@@ -75,6 +73,8 @@ public class Parameters {
 	public double[] betaSpecificStorage;
 	
 	public double molecularDiffusion;
+	public double longitudinalDispersivity;
+	public double tortuosityFactor;
 	
 		
 	private Parameters(double waterDensity, double iceDensity, double specificThermalCapacityWater,
@@ -140,11 +140,13 @@ public class Parameters {
 		
 	}
 	
-	private Parameters(double molecularDiffusion, double referenceTemperatureSWRC, double beta0,
+	private Parameters(double molecularDiffusion,double longitudinalDispersivity,double tortuosityFactor, double referenceTemperatureSWRC, double beta0,
 			double[] thetaS, double[] thetaR, double[] par1, double[] par2, double[] par3, double[] par4, double[] par5, double[] kappaSaturation,
 			double[] alphaSpecificStorage, double[] betaSpecificStorage) {
 		
 		this.molecularDiffusion = molecularDiffusion;
+		this.longitudinalDispersivity = longitudinalDispersivity;
+		this.tortuosityFactor = tortuosityFactor;
 		this.referenceTemperatureSWRC = referenceTemperatureSWRC;
 		this.beta0 = beta0;
 		this.thetaS = thetaS.clone();
