@@ -34,7 +34,7 @@ public class Parameters {
 		}
 		return uniqueInstance;
 	}
-	
+	//Potremmo aggiungere un get per thetawp e thetafc
 	public static Parameters getInstance(double[] molecularDiffusion,double[] longitudinalDispersivity, double referenceTemperatureSWRC, double beta0,
 			double[] thetaS, double[] thetaR, double[] par1, double[] par2, double[] par3, double[] par4, double[] par5, double[] kappaSaturation,
 			double[] alphaSpecificStorage, double[] betaSpecificStorage) {
